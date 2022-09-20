@@ -25,28 +25,80 @@ foreach (Dvd dvd in dvds)
 }
 
 string ricerca;
-Console.WriteLine("Vuoi cercare un libro o un dvd?");
+Console.WriteLine("Vuoi cercare un libro o un dvd? [libri/dvd");
 ricerca = Console.ReadLine();
 if (ricerca == "dvd")
 {
-    Console.WriteLine("Inserisci un Titolo");
-    string titoloRicerca = Console.ReadLine();
-    foreach (Dvd dvd in dvds)
+    Console.WriteLine("Cerchi per Titolo o per Codice? [titolo/codice]");
+    string ricercaTipo = Console.ReadLine();
+    if(ricercaTipo == "titolo")
     {
-       
-        if(dvd.GetTitolo == titoloRicerca)
+        Console.WriteLine("Inserisci un Titolo");
+        string titoloRicerca = Console.ReadLine();
+        foreach (Dvd dvd in dvds)
         {
-            Console.WriteLine(dvd.GetCodice);
+            if (dvd.GetTitolo.ToLower().Contains(titoloRicerca))
+            {
+                Console.WriteLine(dvd.GetTitolo);
+            };
+            
         }
+        
+    }else if(ricercaTipo == "codice")
+    {
+        Console.WriteLine("Inserisci un Codice");
+        string codiceRicerca = Console.ReadLine();
+        foreach (Dvd dvd in dvds)
+        {
+            if (dvd.GetCodice.ToString().Contains(codiceRicerca))
+            {
+                Console.WriteLine(dvd.GetTitolo);
+            };
+
+        }
+    }
+    else
+    {
+        Console.WriteLine("Ricerca non valida");
     }
     
 
-
-
-
 }
-else if(ricerca == "libri")
+else if(ricerca == "libri" || ricerca == "libro")
 {
+    Console.WriteLine("Cerchi per Titolo o per Codice? [titolo/codice]");
+    string ricercaTipo = Console.ReadLine();
+    if (ricercaTipo == "titolo")
+    {
+        Console.WriteLine("Inserisci un Titolo");
+        string titoloRicerca = Console.ReadLine();
+        foreach (Libro libro in libros)
+        {
+            if (libro.GetTitolo.ToLower().Contains(titoloRicerca))
+            {
+                Console.WriteLine(libro.GetTitolo);
+            };
+
+        }
+
+    }
+    else if (ricercaTipo == "codice")
+    {
+        Console.WriteLine("Inserisci un Codice");
+        string codiceRicerca = Console.ReadLine();
+        foreach (Libro libro in libros)
+        {
+            if (libro.GetCodice.ToString().Contains(codiceRicerca))
+            {
+                Console.WriteLine(libro.GetTitolo);
+            };
+
+        }
+    }
+    else
+    {
+        Console.WriteLine("Ricerca non valida");
+    }
 
 }
 else
