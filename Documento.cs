@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 public class Documento
 {
-    long codice;
+    string codice;
     string titolo;
     int anno;
     string settore;
@@ -9,7 +9,7 @@ public class Documento
     int scaffale;
     string autore;
 
-    public Documento(long codice, string titolo, int anno, string settore, bool stato, int scaffale, string autore)
+    public Documento(string codice, string titolo, int anno, string settore, bool stato, int scaffale, string autore)
     {
         this.codice = codice;
         this.titolo = titolo;
@@ -19,7 +19,7 @@ public class Documento
         this.scaffale = scaffale;
         this.autore = autore;
     }
-    public long GetCodice
+    public string GetCodice
     {
         get { return codice; }
     }
@@ -34,7 +34,7 @@ public class Documento
 class Libro : Documento
 {
     int numeroPagine;
-    public Libro(long codice, string titolo, int anno, string settore, bool stato, int scaffale, string autore, int numeroPagine) : base(codice, titolo, anno, settore, stato, scaffale, autore)
+    public Libro(string codice, string titolo, int anno, string settore, bool stato, int scaffale, string autore, int numeroPagine) : base(codice, titolo, anno, settore, stato, scaffale, autore)
     {
         this.numeroPagine = numeroPagine;
     }
@@ -44,7 +44,7 @@ class Dvd : Documento
 {
     int durata;
 
-    public Dvd(long codice, string titolo, int anno, string settore, bool stato, int scaffale, string autore, int durata) : base(codice, titolo, anno, settore, stato, scaffale, autore)
+    public Dvd(string codice, string titolo, int anno, string settore, bool stato, int scaffale, string autore, int durata) : base(codice, titolo, anno, settore, stato, scaffale, autore)
     {
 
         this.durata = durata;
