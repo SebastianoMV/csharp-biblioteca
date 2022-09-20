@@ -11,10 +11,7 @@ public class Prestito
         { get; set; }
 
     public Documento Documento
-        {
-            get { return Documento; }
-            set { Documento = value; }
-        }
+    { get; set; }
 
     public Prestito(string periodo, string nomeUtente, string cognomeUtente, Documento documento)
     {

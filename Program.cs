@@ -1,4 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using System;
 using System.IO;
 
 
@@ -6,7 +7,7 @@ Console.WriteLine("  ");
 List<Utente> utentes = new List<Utente>();
 utentes.Add(new Utente("Ugo", "De Ughi", "ugo@gmail.com", "qwerty1", "345223443"));
 
-
+List<Prestito> prestito = new List<Prestito>();
 
 List <Dvd> dvds = new List<Dvd>();
 dvds.Add(new Dvd("12331", "Signore degli Anelli", 2000, "Fantasy", false, 5, "Peter Jackson", 120));
@@ -18,11 +19,6 @@ libros.Add(new Libro("9780261103665", "Il Silmarillion", 1977, "Fantasy", false,
 libros.Add(new Libro("9788877827029", "Harry Potter", 1997, "Fantasy", false, 3, "J. K. Rowling", 1000));
 libros.Add(new Libro("9780151660346", "1984", 1949, "Distopico", false, 3, "George Orwell", 1000));
 
-
-foreach (Dvd dvd in dvds)
-{
-    Console.WriteLine(dvd.GetCodice);
-}
 
 string ricerca;
 Console.WriteLine("Vuoi cercare un libro o un dvd? [libri/dvd");
@@ -39,7 +35,13 @@ if (ricerca == "dvd")
         {
             if (dvd.GetTitolo.ToLower().Contains(titoloRicerca))
             {
-                Console.WriteLine(dvd.GetTitolo);
+                Console.WriteLine("Vuoi " + dvd.GetTitolo + " in prestito? [si/no]");
+                string scelta = Console.ReadLine();
+                if (scelta == "si")
+                {
+                    prestito.Add(new Prestito("dal 20/9 al 20/10", "Ugo", "De Ughi", dvd));
+                    
+                }
             };
        }
         
@@ -51,7 +53,13 @@ if (ricerca == "dvd")
         {
             if (dvd.GetCodice.Contains(codiceRicerca))
             {
-                Console.WriteLine(dvd.GetTitolo);
+                Console.WriteLine("Vuoi " + dvd.GetTitolo + " in prestito? [si/no]");
+                string scelta = Console.ReadLine();
+                if (scelta == "si")
+                {
+                    prestito.Add(new Prestito("dal 20/9 al 20/10", "Ugo", "De Ughi", dvd));
+
+                }
             };
 
         }
@@ -75,7 +83,13 @@ else if(ricerca == "libri" || ricerca == "libro")
         {
             if (libro.GetTitolo.ToLower().Contains(titoloRicerca))
             {
-                Console.WriteLine(libro.GetTitolo);
+                Console.WriteLine("Vuoi " + libro.GetTitolo + " in prestito? [si/no]");
+                string scelta = Console.ReadLine();
+                if (scelta == "si")
+                {
+                    prestito.Add(new Prestito("dal 20/9 al 20/10", "Ugo", "De Ughi", libro));
+
+                }
             };
 
         }
@@ -89,7 +103,13 @@ else if(ricerca == "libri" || ricerca == "libro")
         {
             if (libro.GetCodice.Contains(codiceRicerca))
             {
-                Console.WriteLine(libro.GetTitolo);
+                Console.WriteLine("Vuoi " + libro.GetTitolo + " in prestito? [si/no]");
+                string scelta = Console.ReadLine();
+                if (scelta == "si")
+                {
+                    prestito.Add(new Prestito("dal 20/9 al 20/10", "Ugo", "De Ughi", libro));
+
+                }
             };
 
         }
@@ -106,3 +126,16 @@ else
 }
 
 
+Console.WriteLine("Se vuoi cercare i tuoi prestiti inserisci il tuo nome e cognome");
+Console.WriteLine("nome:");
+string nome = Console.ReadLine();
+Console.WriteLine("cognome");
+string cognome = Console.ReadLine();
+
+foreach(Prestito prestit in prestito)
+{
+    if(prestit.NomeUtente == nome || prestit.CognomeUtente == cognome)
+    {
+        Console.WriteLine("Hai preso in prestito " + prestit.Documento.GetTitolo);
+    }
+}
