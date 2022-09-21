@@ -19,9 +19,54 @@ libros.Add(new Libro("9780261103665", "Il Silmarillion", 1977, "Fantasy", false,
 libros.Add(new Libro("9788877827029", "Harry Potter", 1997, "Fantasy", false, 3, "J. K. Rowling", 1000));
 libros.Add(new Libro("9780151660346", "1984", 1949, "Distopico", false, 3, "George Orwell", 1000));
 
+//LOGIN
+
+Console.WriteLine("Vuoi loggarti o registrarti? [login/registrati]");
+string sceltalog = Console.ReadLine();
+if(sceltalog == "login")
+{
+    Console.WriteLine("Inserisci la Mail");
+    foreach (Utente utente in utentes)
+    {
+        if (Console.ReadLine() == utente.Email)
+        {
+            Console.WriteLine("Inserisci la Password");
+            if (Console.ReadLine() == utente.Password)
+            {
+                Console.WriteLine("Benvenuto "+ utente.Nome);
+            }
+        }
+    }
+}else if(sceltalog == "registrati")
+{
+    Console.WriteLine("Inserisci nome");
+    string newNome = Console.ReadLine();
+
+    Console.WriteLine("Inserisci cognome");
+    string newCognome = Console.ReadLine();
+
+    Console.WriteLine("Inserisci email");
+    string newEmail = Console.ReadLine();
+
+    Console.WriteLine("Inserisci password");
+    string newPassword = Console.ReadLine();
+
+    Console.WriteLine("Inserisci numero di telefono");
+    string newNumero = Console.ReadLine();
+
+    utentes.Add(new Utente(newNome, newCognome, newEmail, newPassword, newNumero));
+
+    Console.WriteLine("Benvenuto " + newNome + " " + newCognome);
+}
+
+
+
+
+
+//RICERCA E PRESTITO
 
 string ricerca;
-Console.WriteLine("Vuoi cercare un libro o un dvd? [libri/dvd");
+Console.WriteLine("Vuoi cercare un libro o un dvd? [libri/dvd]");
 ricerca = Console.ReadLine();
 if (ricerca == "dvd")
 {
@@ -138,4 +183,11 @@ foreach(Prestito prestit in prestito)
     {
         Console.WriteLine("Hai preso in prestito " + prestit.Documento.GetTitolo);
     }
+}
+
+
+
+void login()
+{
+ 
 }

@@ -1,18 +1,23 @@
 ﻿// See https://aka.ms/new-console-template for more information
 public class Utente
 {
-    string nome;
-    string cognome;
-    string email;
-    string password;
-    string telefono;
+    public string Nome
+    { get; set; }
+    public string Cognome
+    { get; set; }
+    public string Email
+    { get; set; }
+    public string Password
+    { get; set; }
+    public string Telefono
+    { get; set; }
 
     public Utente(string nome, string cognome, string email, string password, string telefono)
     {
-        this.nome = nome;
-        this.cognome = cognome;
-        this.email = email;
-        this.password = password;
-        this.telefono = telefono;
+        this.Nome = nome;
+        this.Cognome = cognome;
+        this.Email = email;
+        this.Password = password;
+        this.Telefono = telefono;
     }
 }
